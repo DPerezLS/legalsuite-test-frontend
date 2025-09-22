@@ -34,17 +34,17 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
+      if (event.key === "Escape" && isOpen) {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener("keydown", handleEscape);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [isOpen, onClose]);
 
@@ -194,54 +194,71 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
                 </p>
               </div>
 
-              {/* Document Section */}
-              {selectedDemand.documents &&
-              selectedDemand.documents.length > 0 ? (
-                <div className="bg-[#E8F5E9] rounded-xl p-4 mb-8">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-[#C5E1A5] rounded-lg flex items-center justify-center">
-                        <svg
-                          className="w-6 h-6 text-[#374E30]"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                      </div>
-                      <span className="text-base text-gray-700">
-                        Nombrearchivo.extensión
-                      </span>
-                    </div>
-                    <button className="text-gray-500 hover:text-gray-700 transition-colors">
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+              {/* Documents Section */}
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Documentos
+                </h3>
+                {selectedDemand.documents &&
+                selectedDemand.documents.length > 0 ? (
+                  <div className="space-y-3">
+                    {selectedDemand.documents.map((document) => (
+                      <div
+                        key={document.id}
+                        className="bg-[#E8F5E9] rounded-xl p-4"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                        />
-                      </svg>
-                    </button>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-[#C5E1A5] rounded-lg flex items-center justify-center flex-shrink-0">
+                              <svg
+                                className="w-6 h-6 text-[#374E30]"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                />
+                              </svg>
+                            </div>
+                            <div>
+                              <span className="text-base font-medium text-gray-900 block">
+                                {document.name}
+                              </span>
+                              {document.type && (
+                                <span className="text-sm text-gray-500 capitalize">
+                                  {document.type}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <button className="text-gray-500 hover:text-gray-700 transition-colors p-2">
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
-              ) : (
-                <div className="bg-[#E8F5E9] rounded-xl p-4 mb-8">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#C5E1A5] rounded-lg flex items-center justify-center">
+                ) : (
+                  <div className="bg-gray-50 rounded-xl p-6 text-center">
+                    <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-3">
                       <svg
-                        className="w-6 h-6 text-[#374E30]"
+                        className="w-8 h-8 text-gray-400"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -258,8 +275,8 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
                       No hay documentos adjuntos
                     </span>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
 
               {/* Action Buttons */}
               <div className="flex gap-4">
@@ -311,26 +328,27 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
           className="fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl transform"
           style={{
             height: `${sheetHeight}vh`,
-            transform: isDragging ? 'none' : undefined,
-            transition: isDragging ? 'none' : 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            transform: isDragging ? "none" : undefined,
+            transition: isDragging
+              ? "none"
+              : "height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
         >
           {/* Handle */}
           <div
-            className="flex justify-center py-4 cursor-pointer select-none"
+            className="flex justify-center py-4 cursor-pointer select-none active:bg-gray-50 transition-colors"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             onClick={handleHandleClick}
           >
-            <div className="w-12 h-1.5 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors"></div>
+            <div className="w-12 h-1.5 bg-gray-400 rounded-full hover:bg-gray-500 transition-all duration-200 transform active:scale-110"></div>
           </div>
 
           {/* Content Area */}
-          <div className="flex flex-col h-full pb-4">
+          <div className="flex flex-col h-full">
             {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-6"
-                 style={{ paddingBottom: '200px' }}>
+            <div className="flex-1 overflow-y-auto px-6 pb-4">
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-[#374E30]">
@@ -386,52 +404,110 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
                   {selectedDemand.description}
                 </p>
               </div>
-            </div>
 
-            {/* Fixed Bottom Section - Document + Action Buttons */}
-            <div className="absolute bottom-0 left-0 right-0 bg-white px-6 py-4 border-t border-gray-100 rounded-b-3xl">
-              {/* Document Section */}
-              <div className="bg-[#E8F5E9] rounded-xl p-3 mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-[#C5E1A5] rounded-lg flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5 text-[#374E30]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
+              {/* Documents Section */}
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Documentos
+                </h3>
+                {selectedDemand.documents &&
+                selectedDemand.documents.length > 0 ? (
+                  <div className="space-y-2">
+                    {selectedDemand.documents.map((document) => (
+                      <div
+                        key={document.id}
+                        className="bg-[#E8F5E9] rounded-xl p-3"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-[#C5E1A5] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg
+                              className="w-5 h-5 text-[#374E30]"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
+                            </svg>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <span className="text-sm font-medium text-gray-900 block truncate">
+                              {document.name}
+                            </span>
+                            {document.type && (
+                              <span className="text-xs text-gray-500 capitalize">
+                                {document.type}
+                              </span>
+                            )}
+                          </div>
+                          <button className="text-gray-500 hover:text-gray-700 transition-colors p-1">
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <span className="text-sm text-gray-700">
-                    {selectedDemand.documents &&
-                    selectedDemand.documents.length > 0
-                      ? "Nombrearchivo.extensión"
-                      : "No hay documentos"}
-                  </span>
-                  {selectedDemand.documents && selectedDemand.documents.length > 0 && (
-                    <button className="ml-auto text-gray-500 hover:text-gray-700 transition-colors">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                ) : (
+                  <div className="bg-gray-50 rounded-xl p-4 text-center">
+                    <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <svg
+                        className="w-6 h-6 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
                       </svg>
-                    </button>
-                  )}
-                </div>
+                    </div>
+                    <span className="text-sm text-gray-500">
+                      No hay documentos adjuntos
+                    </span>
+                  </div>
+                )}
               </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-3">
-                <button className="w-full bg-[#7CAD39] hover:bg-[#6B9A32] text-white font-semibold py-3 rounded-xl transition-colors">
+              {/* Action Buttons - Now part of scrollable content */}
+              <div className="flex gap-2  ">
+                <button className="flex-1 bg-[#7CAD39] hover:bg-[#6B9A32] text-white text-[15px] font-medium py-2 px-2 rounded-lg transition-colors flex items-center justify-center gap-2">
                   Resolver demanda
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
                 </button>
                 <button
                   onClick={onClose}
-                  className="w-full border-2 border-gray-300 text-gray-700 font-medium py-3 rounded-xl hover:bg-gray-50 transition-colors"
+                  className="flex-1 border border-gray-300 text-gray-700 font-medium py-3 text-[15px] px-4 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   Cancelar
                 </button>
