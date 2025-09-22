@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useDemandContext } from "../contexts/DemandContext";
+import { useDemandContext } from "../../contexts/DemandContext";
 
 interface DemandDetailModalProps {
   isOpen: boolean;

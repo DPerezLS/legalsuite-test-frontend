@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDemandContext } from '../contexts/DemandContext';
-import { Filters } from '../types';
+import { useDemandContext } from '../../contexts/DemandContext';
+import { Filters } from '../../types';
 
 const FilterChips: React.FC = () => {
   const { state, applyFilters, resetFilters } = useDemandContext();

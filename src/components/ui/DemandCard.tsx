@@ -1,5 +1,5 @@
 import React from "react";
-import { Demand } from "../types";
+import { Demand } from "../../types";
 
 interface DemandCardProps {
   demand: Demand;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDemandContext } from '../contexts/DemandContext';
+import { useDemandContext } from '../../contexts/DemandContext';
 
 const SearchBar: React.FC = () => {
   const { state, searchDemands } = useDemandContext();

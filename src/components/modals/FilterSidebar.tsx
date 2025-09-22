@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDemandContext } from '../contexts/DemandContext';
-import { Filters } from '../types';
+import { useDemandContext } from '../../contexts/DemandContext';
+import { Filters } from '../../types';
 
 interface FilterSidebarProps {
   isOpen: boolean;
