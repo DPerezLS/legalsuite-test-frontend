@@ -489,7 +489,7 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
 
               {/* Action Buttons - Now part of scrollable content */}
               <div className="flex gap-2  ">
-                <button className="flex-1 bg-[#7CAD39] hover:bg-[#6B9A32] text-white text-[15px] font-medium py-2 px-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+                <button className="flex-1 bg-[#7CAD39] hover:bg-[#6B9A32] text-white text-[15px] font-medium py-2 px-2 rounded-[10px] transition-colors flex items-center justify-center gap-2">
                   Resolver demanda
                   <svg
                     className="w-4 h-4"
@@ -507,7 +507,7 @@ const DemandDetailModal: React.FC<DemandDetailModalProps> = ({
                 </button>
                 <button
                   onClick={onClose}
-                  className="flex-1 border border-gray-300 text-gray-700 font-medium py-3 text-[15px] px-4 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex-1 border border-gray-300 text-gray-700 font-medium py-3 text-[15px] px-4 rounded-[10px] hover:bg-gray-50 transition-colors"
                 >
                   Cancelar
                 </button>
